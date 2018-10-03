@@ -6,8 +6,8 @@ class GameScene: SKScene {
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5) // default
         background.position = CGPoint(x: size.width/2, y: size.height/2)
         //background.zRotation = CGFloat.pi / 8
-        addChild(background)
         background.zPosition = -1
+        addChild(background)
         
         let mySize = background.size
         print("Size: \(mySize)")

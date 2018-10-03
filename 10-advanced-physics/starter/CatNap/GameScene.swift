@@ -1,0 +1,151 @@
+/**
+ * Copyright (c) 2017 Razeware LLC
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
+ * distribute, sublicense, create a derivative work, and/or sell copies of the
+ * Software in any work that is designed, intended, or marketed for pedagogical or
+ * instructional purposes related to programming, coding, application development,
+ * or information technology.  Permission for such use, copying, modification,
+ * merger, publication, distribution, sublicensing, creation of derivative works,
+ * or sale is expressly withheld.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+import SpriteKit
+
+protocol EventListenerNode {
+  func didMoveToScene()
+}
+
+protocol InteractiveNode {
+  func interact()
+}
+
+struct PhysicsCategory {
+  static let None:  UInt32 = 0
+  static let Cat:   UInt32 = 0b1 // 1
+  static let Block: UInt32 = 0b10 // 2
+  static let Bed:   UInt32 = 0b100 // 4
+  static let Edge:  UInt32 = 0b1000 // 8
+  static let Label: UInt32 = 0b10000 // 16
+}
+
+class GameScene: SKScene, SKPhysicsContactDelegate {
+  
+  var bedNode: BedNode!
+  var catNode: CatNode!
+  
+  var playable = true
+  
+  override func didMove(to view: SKView) {
+    // Calculate playable margin
+    
+    let maxAspectRatio: CGFloat = 16.0/9.0
+    let maxAspectRatioHeight = size.width / maxAspectRatio
+    let playableMargin: CGFloat = (size.height
+      - maxAspectRatioHeight)/2
+    
+    let playableRect = CGRect(x: 0, y: playableMargin,
+                              width: size.width, height: size.height-playableMargin*2)
+    
+    physicsBody = SKPhysicsBody(edgeLoopFrom: playableRect)
+    physicsWorld.contactDelegate = self
+    physicsBody!.categoryBitMask = PhysicsCategory.Edge
+    
+    enumerateChildNodes(withName: "//*", using: { node, _ in
+      if let eventListenerNode = node as? EventListenerNode {
+        eventListenerNode.didMoveToScene()
+      }
+    })
+    
+    bedNode = childNode(withName: "bed") as! BedNode
+    catNode = childNode(withName: "//cat_body") as! CatNode
+    
+    SKTAudio.sharedInstance()
+      .playBackgroundMusic("backgroundMusic.mp3")
+  }
+  
+  func didBegin(_ contact: SKPhysicsContact) {
+    let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+    
+    if collision == PhysicsCategory.Label | PhysicsCategory.Edge {
+      let labelNode = contact.bodyA.categoryBitMask == PhysicsCategory.Label ?
+        contact.bodyA.node :
+        contact.bodyB.node
+      
+      if let message = labelNode as? MessageNode {
+        message.didBounce()
+      }
+    }
+    
+    if !playable {
+      return
+    }
+    
+    if collision == PhysicsCategory.Cat | PhysicsCategory.Bed {
+      print("SUCCESS")
+      win()
+    } else if collision == PhysicsCategory.Cat | PhysicsCategory.Edge {
+      print("FAIL")
+      lose()
+    }
+  }
+  
+  func inGameMessage(text: String) {
+    let message = MessageNode(message: text)
+    message.position = CGPoint(x: frame.midX, y: frame.midY)
+    addChild(message)
+  }
+  
+  func newGame() {
+    let scene = GameScene(fileNamed:"GameScene")
+    scene!.scaleMode = scaleMode
+    view!.presentScene(scene)
+  }
+  
+  func lose() {
+    playable = false
+    
+    //1
+    SKTAudio.sharedInstance().pauseBackgroundMusic()
+    SKTAudio.sharedInstance().playSoundEffect("lose.mp3")
+    
+    //2
+    inGameMessage(text: "Try again...")
+    
+    //3
+    run(SKAction.afterDelay(5, runBlock: newGame))
+    
+    catNode.wakeUp()
+  }
+  
+  func win() {
+    playable = false
+    
+    SKTAudio.sharedInstance().pauseBackgroundMusic()
+    SKTAudio.sharedInstance().playSoundEffect("win.mp3")
+    
+    inGameMessage(text: "Nice job!")
+    
+    run(SKAction.afterDelay(3, runBlock: newGame))
+    
+    catNode.curlAt(scenePoint: bedNode.position)
+  }
+}

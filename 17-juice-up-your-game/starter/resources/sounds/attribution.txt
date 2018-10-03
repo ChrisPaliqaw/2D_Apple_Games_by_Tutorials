@@ -1,0 +1,9 @@
+* bgMusic.mp3, nitro.wav, DrownFireBug.mp3 - From iOS Games by Tutorials book, by Vinnie Prabhu
+* SpaceGame.caf - From Space Game Starter Kit, by Ray Wenderlich with Garage Band
+* coin*.wav, bombDrop.wav, explosion*.wav, brick.caf, FireShoot.caf, jump.wav - By Ray Wenderlich with Cxfr tool
+* alarm.wav - From Freesound, by cydon [https://www.freesound.org/people/cydon/sounds/127708/]
+* pop.wav - From Wild Fables, by Andrea Coulter
+* tickTock.wav - From Freesound, by Izkhanilov [https://www.freesound.org/people/Izkhanilov/sounds/54848/]
+* 22k_enemy_drill_robot_taking_damageV1.wav - From Learning cocos2D, by Mike Weiser
+* boost.wav - From Freesound, by EcoDTR [https://www.freesound.org/people/EcoDTR/sounds/36847/]
+* player_die.wav - From Platformer Game Starter Kit

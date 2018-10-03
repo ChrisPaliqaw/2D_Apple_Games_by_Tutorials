@@ -1,0 +1,809 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F50449031F2268E500DB8009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50449021F2268E500DB8009 /* AppDelegate.swift */; };
+		F504490B1F2268E500DB8009 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F504490A1F2268E500DB8009 /* ViewController.swift */; };
+		F504490D1F2268E500DB8009 /* macOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F504490C1F2268E500DB8009 /* macOS.xcassets */; };
+		F50449101F2268E500DB8009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F504490E1F2268E500DB8009 /* Main.storyboard */; };
+		F50449161F226A9600DB8009 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F5954B8E1D21F0F60088187E /* GameScene.sks */; };
+		F50449171F226A9600DB8009 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5954B921D21F0F60088187E /* GameScene.swift */; };
+		F50449181F226AAE00DB8009 /* Splash.sks in Resources */ = {isa = PBXBuildFile; fileRef = F57E6CC61D3D4D8F00827D9A /* Splash.sks */; };
+		F50449221F226AC700DB8009 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193811D2350B2006E68F6 /* CGFloat+Extensions.swift */; };
+		F50449231F226AC700DB8009 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193821D2350B2006E68F6 /* CGPoint+Extensions.swift */; };
+		F50449241F226AC700DB8009 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193831D2350B2006E68F6 /* CGVector+Extensions.swift */; };
+		F50449251F226AC700DB8009 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193841D2350B2006E68F6 /* Int+Extensions.swift */; };
+		F50449261F226AC700DB8009 /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193851D2350B2006E68F6 /* SKAction+Extensions.swift */; };
+		F50449271F226AC700DB8009 /* SKAction+SpecialEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193861D2350B2006E68F6 /* SKAction+SpecialEffects.swift */; };
+		F50449281F226AC700DB8009 /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193871D2350B2006E68F6 /* SKColor+Extensions.swift */; };
+		F50449291F226AC700DB8009 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193881D2350B2006E68F6 /* SKNode+Extensions.swift */; };
+		F504492A1F226AC700DB8009 /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193891D2350B2006E68F6 /* SKTAudio.swift */; };
+		F504492B1F226AC700DB8009 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F571938A1D2350B2006E68F6 /* SKTEffects.swift */; };
+		F504492C1F226AC700DB8009 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F571938B1D2350B2006E68F6 /* SKTTimingFunctions.swift */; };
+		F504492D1F226AC700DB8009 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F571938C1D2350B2006E68F6 /* Vector3.swift */; };
+		F504492E1F226AD100DB8009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5954B991D21F0F60088187E /* Assets.xcassets */; };
+		F51272411F747FFA009C2774 /* Fish Caught.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F51272381F747FF7009C2774 /* Fish Caught.mp3 */; };
+		F51272421F747FFA009C2774 /* Zombie Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F51272391F747FF8009C2774 /* Zombie Sound.mp3 */; };
+		F51272431F747FFA009C2774 /* Game Over Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723A1F747FF8009C2774 /* Game Over Sound.mp3 */; };
+		F51272441F747FFA009C2774 /* Fish Off Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723B1F747FF9009C2774 /* Fish Off Sound.mp3 */; };
+		F51272451F747FFA009C2774 /* Reel Start Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723C1F747FF9009C2774 /* Reel Start Sound.mp3 */; };
+		F51272461F747FFA009C2774 /* Fish Bash Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723D1F747FF9009C2774 /* Fish Bash Sound.mp3 */; };
+		F51272471F747FFA009C2774 /* Fishing Ambience Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723E1F747FFA009C2774 /* Fishing Ambience Sound.mp3 */; };
+		F51272481F747FFA009C2774 /* Reel Tick Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723F1F747FFA009C2774 /* Reel Tick Sound.mp3 */; };
+		F51272491F747FFA009C2774 /* Yum Fish Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F51272401F747FFA009C2774 /* Yum Fish Sound.mp3 */; };
+		F512724A1F748000009C2774 /* Fish Bash Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723D1F747FF9009C2774 /* Fish Bash Sound.mp3 */; };
+		F512724B1F748000009C2774 /* Fish Caught.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F51272381F747FF7009C2774 /* Fish Caught.mp3 */; };
+		F512724C1F748000009C2774 /* Fish Off Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723B1F747FF9009C2774 /* Fish Off Sound.mp3 */; };
+		F512724D1F748000009C2774 /* Fishing Ambience Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723E1F747FFA009C2774 /* Fishing Ambience Sound.mp3 */; };
+		F512724E1F748000009C2774 /* Game Over Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723A1F747FF8009C2774 /* Game Over Sound.mp3 */; };
+		F512724F1F748000009C2774 /* Reel Start Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723C1F747FF9009C2774 /* Reel Start Sound.mp3 */; };
+		F51272501F748000009C2774 /* Reel Tick Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723F1F747FFA009C2774 /* Reel Tick Sound.mp3 */; };
+		F51272511F748000009C2774 /* Yum Fish Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F51272401F747FFA009C2774 /* Yum Fish Sound.mp3 */; };
+		F51272521F748000009C2774 /* Zombie Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F51272391F747FF8009C2774 /* Zombie Sound.mp3 */; };
+		F51272531F748001009C2774 /* Fish Bash Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723D1F747FF9009C2774 /* Fish Bash Sound.mp3 */; };
+		F51272541F748001009C2774 /* Fish Caught.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F51272381F747FF7009C2774 /* Fish Caught.mp3 */; };
+		F51272551F748001009C2774 /* Fish Off Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723B1F747FF9009C2774 /* Fish Off Sound.mp3 */; };
+		F51272561F748001009C2774 /* Fishing Ambience Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723E1F747FFA009C2774 /* Fishing Ambience Sound.mp3 */; };
+		F51272571F748001009C2774 /* Game Over Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723A1F747FF8009C2774 /* Game Over Sound.mp3 */; };
+		F51272581F748001009C2774 /* Reel Start Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723C1F747FF9009C2774 /* Reel Start Sound.mp3 */; };
+		F51272591F748001009C2774 /* Reel Tick Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F512723F1F747FFA009C2774 /* Reel Tick Sound.mp3 */; };
+		F512725A1F748001009C2774 /* Yum Fish Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F51272401F747FFA009C2774 /* Yum Fish Sound.mp3 */; };
+		F512725B1F748001009C2774 /* Zombie Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F51272391F747FF8009C2774 /* Zombie Sound.mp3 */; };
+		F55185091F327171001672C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55185081F327171001672C8 /* AppDelegate.swift */; };
+		F55185111F327171001672C8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55185101F327171001672C8 /* GameViewController.swift */; };
+		F55185141F327171001672C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55185121F327171001672C8 /* Main.storyboard */; };
+		F55185161F327171001672C8 /* Assets_tvos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55185151F327171001672C8 /* Assets_tvos.xcassets */; };
+		F551851B1F32731F001672C8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F5954B8E1D21F0F60088187E /* GameScene.sks */; };
+		F551851C1F32731F001672C8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5954B921D21F0F60088187E /* GameScene.swift */; };
+		F551851D1F32731F001672C8 /* Splash.sks in Resources */ = {isa = PBXBuildFile; fileRef = F57E6CC61D3D4D8F00827D9A /* Splash.sks */; };
+		F55185271F327338001672C8 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193811D2350B2006E68F6 /* CGFloat+Extensions.swift */; };
+		F55185281F327338001672C8 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193821D2350B2006E68F6 /* CGPoint+Extensions.swift */; };
+		F55185291F327338001672C8 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193831D2350B2006E68F6 /* CGVector+Extensions.swift */; };
+		F551852A1F327338001672C8 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193841D2350B2006E68F6 /* Int+Extensions.swift */; };
+		F551852B1F327338001672C8 /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193851D2350B2006E68F6 /* SKAction+Extensions.swift */; };
+		F551852C1F327338001672C8 /* SKAction+SpecialEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193861D2350B2006E68F6 /* SKAction+SpecialEffects.swift */; };
+		F551852D1F327338001672C8 /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193871D2350B2006E68F6 /* SKColor+Extensions.swift */; };
+		F551852E1F327338001672C8 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193881D2350B2006E68F6 /* SKNode+Extensions.swift */; };
+		F551852F1F327338001672C8 /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193891D2350B2006E68F6 /* SKTAudio.swift */; };
+		F55185301F327338001672C8 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F571938A1D2350B2006E68F6 /* SKTEffects.swift */; };
+		F55185311F327338001672C8 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F571938B1D2350B2006E68F6 /* SKTTimingFunctions.swift */; };
+		F55185321F327338001672C8 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F571938C1D2350B2006E68F6 /* Vector3.swift */; };
+		F55185331F327341001672C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5954B991D21F0F60088187E /* Assets.xcassets */; };
+		F571938D1D2350B2006E68F6 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193811D2350B2006E68F6 /* CGFloat+Extensions.swift */; };
+		F571938E1D2350B2006E68F6 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193821D2350B2006E68F6 /* CGPoint+Extensions.swift */; };
+		F571938F1D2350B2006E68F6 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193831D2350B2006E68F6 /* CGVector+Extensions.swift */; };
+		F57193901D2350B2006E68F6 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193841D2350B2006E68F6 /* Int+Extensions.swift */; };
+		F57193911D2350B2006E68F6 /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193851D2350B2006E68F6 /* SKAction+Extensions.swift */; };
+		F57193921D2350B2006E68F6 /* SKAction+SpecialEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193861D2350B2006E68F6 /* SKAction+SpecialEffects.swift */; };
+		F57193931D2350B2006E68F6 /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193871D2350B2006E68F6 /* SKColor+Extensions.swift */; };
+		F57193941D2350B2006E68F6 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193881D2350B2006E68F6 /* SKNode+Extensions.swift */; };
+		F57193951D2350B2006E68F6 /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57193891D2350B2006E68F6 /* SKTAudio.swift */; };
+		F57193961D2350B2006E68F6 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F571938A1D2350B2006E68F6 /* SKTEffects.swift */; };
+		F57193971D2350B2006E68F6 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F571938B1D2350B2006E68F6 /* SKTTimingFunctions.swift */; };
+		F57193981D2350B2006E68F6 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F571938C1D2350B2006E68F6 /* Vector3.swift */; };
+		F57E6CC81D3D4D8F00827D9A /* Splash.sks in Resources */ = {isa = PBXBuildFile; fileRef = F57E6CC61D3D4D8F00827D9A /* Splash.sks */; };
+		F5954B8D1D21F0F60088187E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5954B8C1D21F0F60088187E /* AppDelegate.swift */; };
+		F5954B8F1D21F0F60088187E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F5954B8E1D21F0F60088187E /* GameScene.sks */; };
+		F5954B931D21F0F60088187E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5954B921D21F0F60088187E /* GameScene.swift */; };
+		F5954B951D21F0F60088187E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5954B941D21F0F60088187E /* GameViewController.swift */; };
+		F5954B981D21F0F60088187E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5954B961D21F0F60088187E /* Main.storyboard */; };
+		F5954B9A1D21F0F60088187E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5954B991D21F0F60088187E /* Assets.xcassets */; };
+		F5954B9D1D21F0F60088187E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5954B9B1D21F0F60088187E /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F50449001F2268E500DB8009 /* Zombie Piranhas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zombie Piranhas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F50449021F2268E500DB8009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F504490A1F2268E500DB8009 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F504490C1F2268E500DB8009 /* macOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = macOS.xcassets; sourceTree = "<group>"; };
+		F504490F1F2268E500DB8009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F50449111F2268E500DB8009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F50449121F2268E500DB8009 /* Zombie_Piranhas_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zombie_Piranhas_macOS.entitlements; sourceTree = "<group>"; };
+		F51272381F747FF7009C2774 /* Fish Caught.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Fish Caught.mp3"; sourceTree = "<group>"; };
+		F51272391F747FF8009C2774 /* Zombie Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Zombie Sound.mp3"; sourceTree = "<group>"; };
+		F512723A1F747FF8009C2774 /* Game Over Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Game Over Sound.mp3"; sourceTree = "<group>"; };
+		F512723B1F747FF9009C2774 /* Fish Off Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Fish Off Sound.mp3"; sourceTree = "<group>"; };
+		F512723C1F747FF9009C2774 /* Reel Start Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Reel Start Sound.mp3"; sourceTree = "<group>"; };
+		F512723D1F747FF9009C2774 /* Fish Bash Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Fish Bash Sound.mp3"; sourceTree = "<group>"; };
+		F512723E1F747FFA009C2774 /* Fishing Ambience Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Fishing Ambience Sound.mp3"; sourceTree = "<group>"; };
+		F512723F1F747FFA009C2774 /* Reel Tick Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Reel Tick Sound.mp3"; sourceTree = "<group>"; };
+		F51272401F747FFA009C2774 /* Yum Fish Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Yum Fish Sound.mp3"; sourceTree = "<group>"; };
+		F55185061F327170001672C8 /* Zombie Piranhas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zombie Piranhas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F55185081F327171001672C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F55185101F327171001672C8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		F55185131F327171001672C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F55185151F327171001672C8 /* Assets_tvos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets_tvos.xcassets; sourceTree = "<group>"; };
+		F55185171F327171001672C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F57193811D2350B2006E68F6 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		F57193821D2350B2006E68F6 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		F57193831D2350B2006E68F6 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
+		F57193841D2350B2006E68F6 /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		F57193851D2350B2006E68F6 /* SKAction+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+Extensions.swift"; sourceTree = "<group>"; };
+		F57193861D2350B2006E68F6 /* SKAction+SpecialEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+SpecialEffects.swift"; sourceTree = "<group>"; };
+		F57193871D2350B2006E68F6 /* SKColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKColor+Extensions.swift"; sourceTree = "<group>"; };
+		F57193881D2350B2006E68F6 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
+		F57193891D2350B2006E68F6 /* SKTAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
+		F571938A1D2350B2006E68F6 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
+		F571938B1D2350B2006E68F6 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
+		F571938C1D2350B2006E68F6 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		F57E6CC61D3D4D8F00827D9A /* Splash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Splash.sks; sourceTree = "<group>"; };
+		F5954B891D21F0F60088187E /* Zombie Piranhas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zombie Piranhas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5954B8C1D21F0F60088187E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F5954B8E1D21F0F60088187E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		F5954B921D21F0F60088187E /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		F5954B941D21F0F60088187E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		F5954B971D21F0F60088187E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F5954B991D21F0F60088187E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F5954B9C1D21F0F60088187E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F5954B9E1D21F0F60088187E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F50448FD1F2268E500DB8009 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F55185031F327170001672C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5954B861D21F0F60088187E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F50449011F2268E500DB8009 /* Zombie Piranhas macOS */ = {
+			isa = PBXGroup;
+			children = (
+				F50449021F2268E500DB8009 /* AppDelegate.swift */,
+				F504490A1F2268E500DB8009 /* ViewController.swift */,
+				F504490C1F2268E500DB8009 /* macOS.xcassets */,
+				F504490E1F2268E500DB8009 /* Main.storyboard */,
+				F50449111F2268E500DB8009 /* Info.plist */,
+				F50449121F2268E500DB8009 /* Zombie_Piranhas_macOS.entitlements */,
+			);
+			path = "Zombie Piranhas macOS";
+			sourceTree = "<group>";
+		};
+		F55185071F327171001672C8 /* Zombie Piranhas tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				F55185081F327171001672C8 /* AppDelegate.swift */,
+				F55185101F327171001672C8 /* GameViewController.swift */,
+				F55185121F327171001672C8 /* Main.storyboard */,
+				F55185151F327171001672C8 /* Assets_tvos.xcassets */,
+				F55185171F327171001672C8 /* Info.plist */,
+			);
+			path = "Zombie Piranhas tvOS";
+			sourceTree = "<group>";
+		};
+		F560C2481D2EB28D0066C872 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				F512723D1F747FF9009C2774 /* Fish Bash Sound.mp3 */,
+				F51272381F747FF7009C2774 /* Fish Caught.mp3 */,
+				F512723B1F747FF9009C2774 /* Fish Off Sound.mp3 */,
+				F512723E1F747FFA009C2774 /* Fishing Ambience Sound.mp3 */,
+				F512723A1F747FF8009C2774 /* Game Over Sound.mp3 */,
+				F512723C1F747FF9009C2774 /* Reel Start Sound.mp3 */,
+				F512723F1F747FFA009C2774 /* Reel Tick Sound.mp3 */,
+				F51272401F747FFA009C2774 /* Yum Fish Sound.mp3 */,
+				F51272391F747FF8009C2774 /* Zombie Sound.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		F57193801D2350B2006E68F6 /* SKTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				F57193811D2350B2006E68F6 /* CGFloat+Extensions.swift */,
+				F57193821D2350B2006E68F6 /* CGPoint+Extensions.swift */,
+				F57193831D2350B2006E68F6 /* CGVector+Extensions.swift */,
+				F57193841D2350B2006E68F6 /* Int+Extensions.swift */,
+				F57193851D2350B2006E68F6 /* SKAction+Extensions.swift */,
+				F57193861D2350B2006E68F6 /* SKAction+SpecialEffects.swift */,
+				F57193871D2350B2006E68F6 /* SKColor+Extensions.swift */,
+				F57193881D2350B2006E68F6 /* SKNode+Extensions.swift */,
+				F57193891D2350B2006E68F6 /* SKTAudio.swift */,
+				F571938A1D2350B2006E68F6 /* SKTEffects.swift */,
+				F571938B1D2350B2006E68F6 /* SKTTimingFunctions.swift */,
+				F571938C1D2350B2006E68F6 /* Vector3.swift */,
+			);
+			path = SKTUtils;
+			sourceTree = "<group>";
+		};
+		F5954B801D21F0F60088187E = {
+			isa = PBXGroup;
+			children = (
+				F5954B8B1D21F0F60088187E /* Zombie Piranhas */,
+				F50449011F2268E500DB8009 /* Zombie Piranhas macOS */,
+				F55185071F327171001672C8 /* Zombie Piranhas tvOS */,
+				F5954B8A1D21F0F60088187E /* Products */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+		};
+		F5954B8A1D21F0F60088187E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5954B891D21F0F60088187E /* Zombie Piranhas.app */,
+				F50449001F2268E500DB8009 /* Zombie Piranhas.app */,
+				F55185061F327170001672C8 /* Zombie Piranhas.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5954B8B1D21F0F60088187E /* Zombie Piranhas */ = {
+			isa = PBXGroup;
+			children = (
+				F5954B8C1D21F0F60088187E /* AppDelegate.swift */,
+				F5954B8E1D21F0F60088187E /* GameScene.sks */,
+				F5954B921D21F0F60088187E /* GameScene.swift */,
+				F5954B941D21F0F60088187E /* GameViewController.swift */,
+				F57E6CC61D3D4D8F00827D9A /* Splash.sks */,
+				F560C2481D2EB28D0066C872 /* Audio */,
+				F57193801D2350B2006E68F6 /* SKTUtils */,
+				F5954B961D21F0F60088187E /* Main.storyboard */,
+				F5954B991D21F0F60088187E /* Assets.xcassets */,
+				F5954B9B1D21F0F60088187E /* LaunchScreen.storyboard */,
+				F5954B9E1D21F0F60088187E /* Info.plist */,
+			);
+			path = "Zombie Piranhas";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F50448FF1F2268E500DB8009 /* Zombie Piranhas macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F50449151F2268E500DB8009 /* Build configuration list for PBXNativeTarget "Zombie Piranhas macOS" */;
+			buildPhases = (
+				F50448FC1F2268E500DB8009 /* Sources */,
+				F50448FD1F2268E500DB8009 /* Frameworks */,
+				F50448FE1F2268E500DB8009 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Zombie Piranhas macOS";
+			productName = "Zombie Piranhas macOS";
+			productReference = F50449001F2268E500DB8009 /* Zombie Piranhas.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F55185051F327170001672C8 /* Zombie Piranhas tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F551851A1F327171001672C8 /* Build configuration list for PBXNativeTarget "Zombie Piranhas tvOS" */;
+			buildPhases = (
+				F55185021F327170001672C8 /* Sources */,
+				F55185031F327170001672C8 /* Frameworks */,
+				F55185041F327170001672C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Zombie Piranhas tvOS";
+			productName = "Zombie Piranhas tvOS";
+			productReference = F55185061F327170001672C8 /* Zombie Piranhas.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F5954B881D21F0F60088187E /* Zombie Piranhas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5954BA11D21F0F60088187E /* Build configuration list for PBXNativeTarget "Zombie Piranhas" */;
+			buildPhases = (
+				F5954B851D21F0F60088187E /* Sources */,
+				F5954B861D21F0F60088187E /* Frameworks */,
+				F5954B871D21F0F60088187E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Zombie Piranhas";
+			productName = "Zombie Piranhas";
+			productReference = F5954B891D21F0F60088187E /* Zombie Piranhas.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F5954B811D21F0F60088187E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Ray Wenderlich";
+				TargetAttributes = {
+					F50448FF1F2268E500DB8009 = {
+						CreatedOnToolsVersion = 9.0;
+					};
+					F55185051F327170001672C8 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					F5954B881D21F0F60088187E = {
+						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F5954B841D21F0F60088187E /* Build configuration list for PBXProject "Zombie Piranhas" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F5954B801D21F0F60088187E;
+			productRefGroup = F5954B8A1D21F0F60088187E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F5954B881D21F0F60088187E /* Zombie Piranhas */,
+				F50448FF1F2268E500DB8009 /* Zombie Piranhas macOS */,
+				F55185051F327170001672C8 /* Zombie Piranhas tvOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F50448FE1F2268E500DB8009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F50449181F226AAE00DB8009 /* Splash.sks in Resources */,
+				F51272501F748000009C2774 /* Reel Tick Sound.mp3 in Resources */,
+				F512724B1F748000009C2774 /* Fish Caught.mp3 in Resources */,
+				F512724E1F748000009C2774 /* Game Over Sound.mp3 in Resources */,
+				F504490D1F2268E500DB8009 /* macOS.xcassets in Resources */,
+				F512724A1F748000009C2774 /* Fish Bash Sound.mp3 in Resources */,
+				F504492E1F226AD100DB8009 /* Assets.xcassets in Resources */,
+				F51272521F748000009C2774 /* Zombie Sound.mp3 in Resources */,
+				F512724D1F748000009C2774 /* Fishing Ambience Sound.mp3 in Resources */,
+				F512724F1F748000009C2774 /* Reel Start Sound.mp3 in Resources */,
+				F50449161F226A9600DB8009 /* GameScene.sks in Resources */,
+				F512724C1F748000009C2774 /* Fish Off Sound.mp3 in Resources */,
+				F51272511F748000009C2774 /* Yum Fish Sound.mp3 in Resources */,
+				F50449101F2268E500DB8009 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F55185041F327170001672C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F551851D1F32731F001672C8 /* Splash.sks in Resources */,
+				F51272591F748001009C2774 /* Reel Tick Sound.mp3 in Resources */,
+				F51272541F748001009C2774 /* Fish Caught.mp3 in Resources */,
+				F51272571F748001009C2774 /* Game Over Sound.mp3 in Resources */,
+				F55185141F327171001672C8 /* Main.storyboard in Resources */,
+				F51272531F748001009C2774 /* Fish Bash Sound.mp3 in Resources */,
+				F55185331F327341001672C8 /* Assets.xcassets in Resources */,
+				F512725B1F748001009C2774 /* Zombie Sound.mp3 in Resources */,
+				F51272561F748001009C2774 /* Fishing Ambience Sound.mp3 in Resources */,
+				F51272581F748001009C2774 /* Reel Start Sound.mp3 in Resources */,
+				F551851B1F32731F001672C8 /* GameScene.sks in Resources */,
+				F51272551F748001009C2774 /* Fish Off Sound.mp3 in Resources */,
+				F512725A1F748001009C2774 /* Yum Fish Sound.mp3 in Resources */,
+				F55185161F327171001672C8 /* Assets_tvos.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5954B871D21F0F60088187E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F51272491F747FFA009C2774 /* Yum Fish Sound.mp3 in Resources */,
+				F51272431F747FFA009C2774 /* Game Over Sound.mp3 in Resources */,
+				F51272421F747FFA009C2774 /* Zombie Sound.mp3 in Resources */,
+				F5954B981D21F0F60088187E /* Main.storyboard in Resources */,
+				F57E6CC81D3D4D8F00827D9A /* Splash.sks in Resources */,
+				F5954B8F1D21F0F60088187E /* GameScene.sks in Resources */,
+				F51272471F747FFA009C2774 /* Fishing Ambience Sound.mp3 in Resources */,
+				F51272441F747FFA009C2774 /* Fish Off Sound.mp3 in Resources */,
+				F51272461F747FFA009C2774 /* Fish Bash Sound.mp3 in Resources */,
+				F5954B9A1D21F0F60088187E /* Assets.xcassets in Resources */,
+				F51272451F747FFA009C2774 /* Reel Start Sound.mp3 in Resources */,
+				F5954B9D1D21F0F60088187E /* LaunchScreen.storyboard in Resources */,
+				F51272481F747FFA009C2774 /* Reel Tick Sound.mp3 in Resources */,
+				F51272411F747FFA009C2774 /* Fish Caught.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F50448FC1F2268E500DB8009 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F50449171F226A9600DB8009 /* GameScene.swift in Sources */,
+				F50449231F226AC700DB8009 /* CGPoint+Extensions.swift in Sources */,
+				F504492C1F226AC700DB8009 /* SKTTimingFunctions.swift in Sources */,
+				F504492B1F226AC700DB8009 /* SKTEffects.swift in Sources */,
+				F50449271F226AC700DB8009 /* SKAction+SpecialEffects.swift in Sources */,
+				F50449241F226AC700DB8009 /* CGVector+Extensions.swift in Sources */,
+				F50449261F226AC700DB8009 /* SKAction+Extensions.swift in Sources */,
+				F50449281F226AC700DB8009 /* SKColor+Extensions.swift in Sources */,
+				F504490B1F2268E500DB8009 /* ViewController.swift in Sources */,
+				F50449251F226AC700DB8009 /* Int+Extensions.swift in Sources */,
+				F50449291F226AC700DB8009 /* SKNode+Extensions.swift in Sources */,
+				F504492A1F226AC700DB8009 /* SKTAudio.swift in Sources */,
+				F50449221F226AC700DB8009 /* CGFloat+Extensions.swift in Sources */,
+				F504492D1F226AC700DB8009 /* Vector3.swift in Sources */,
+				F50449031F2268E500DB8009 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F55185021F327170001672C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F551851C1F32731F001672C8 /* GameScene.swift in Sources */,
+				F55185281F327338001672C8 /* CGPoint+Extensions.swift in Sources */,
+				F55185311F327338001672C8 /* SKTTimingFunctions.swift in Sources */,
+				F55185301F327338001672C8 /* SKTEffects.swift in Sources */,
+				F551852C1F327338001672C8 /* SKAction+SpecialEffects.swift in Sources */,
+				F55185291F327338001672C8 /* CGVector+Extensions.swift in Sources */,
+				F551852B1F327338001672C8 /* SKAction+Extensions.swift in Sources */,
+				F551852D1F327338001672C8 /* SKColor+Extensions.swift in Sources */,
+				F55185111F327171001672C8 /* GameViewController.swift in Sources */,
+				F551852A1F327338001672C8 /* Int+Extensions.swift in Sources */,
+				F551852E1F327338001672C8 /* SKNode+Extensions.swift in Sources */,
+				F551852F1F327338001672C8 /* SKTAudio.swift in Sources */,
+				F55185271F327338001672C8 /* CGFloat+Extensions.swift in Sources */,
+				F55185321F327338001672C8 /* Vector3.swift in Sources */,
+				F55185091F327171001672C8 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5954B851D21F0F60088187E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5954B931D21F0F60088187E /* GameScene.swift in Sources */,
+				F571938E1D2350B2006E68F6 /* CGPoint+Extensions.swift in Sources */,
+				F57193971D2350B2006E68F6 /* SKTTimingFunctions.swift in Sources */,
+				F57193961D2350B2006E68F6 /* SKTEffects.swift in Sources */,
+				F57193921D2350B2006E68F6 /* SKAction+SpecialEffects.swift in Sources */,
+				F571938F1D2350B2006E68F6 /* CGVector+Extensions.swift in Sources */,
+				F57193911D2350B2006E68F6 /* SKAction+Extensions.swift in Sources */,
+				F57193931D2350B2006E68F6 /* SKColor+Extensions.swift in Sources */,
+				F5954B951D21F0F60088187E /* GameViewController.swift in Sources */,
+				F57193901D2350B2006E68F6 /* Int+Extensions.swift in Sources */,
+				F57193941D2350B2006E68F6 /* SKNode+Extensions.swift in Sources */,
+				F57193951D2350B2006E68F6 /* SKTAudio.swift in Sources */,
+				F571938D1D2350B2006E68F6 /* CGFloat+Extensions.swift in Sources */,
+				F57193981D2350B2006E68F6 /* Vector3.swift in Sources */,
+				F5954B8D1D21F0F60088187E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F504490E1F2268E500DB8009 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F504490F1F2268E500DB8009 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F55185121F327171001672C8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F55185131F327171001672C8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F5954B961D21F0F60088187E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5954B971D21F0F60088187E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F5954B9B1D21F0F60088187E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5954B9C1D21F0F60088187E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F50449131F2268E500DB8009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_macOS;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Zombie Piranhas macOS/Zombie_Piranhas_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Zombie Piranhas macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.Zombie-Piranhas-macOS";
+				PRODUCT_NAME = "Zombie Piranhas";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		F50449141F2268E500DB8009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_macOS;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Zombie Piranhas macOS/Zombie_Piranhas_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Zombie Piranhas macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.Zombie-Piranhas-macOS";
+				PRODUCT_NAME = "Zombie Piranhas";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		F55185181F327171001672C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Zombie Piranhas tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.Zombie-Piranhas-tvOS";
+				PRODUCT_NAME = "Zombie Piranhas";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		F55185191F327171001672C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Zombie Piranhas tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.Zombie-Piranhas-tvOS";
+				PRODUCT_NAME = "Zombie Piranhas";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		F5954B9F1D21F0F60088187E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F5954BA01D21F0F60088187E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F5954BA21D21F0F60088187E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Zombie Piranhas/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.Zombie-Piranhas";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		F5954BA31D21F0F60088187E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Zombie Piranhas/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.Zombie-Piranhas";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F50449151F2268E500DB8009 /* Build configuration list for PBXNativeTarget "Zombie Piranhas macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F50449131F2268E500DB8009 /* Debug */,
+				F50449141F2268E500DB8009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F551851A1F327171001672C8 /* Build configuration list for PBXNativeTarget "Zombie Piranhas tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F55185181F327171001672C8 /* Debug */,
+				F55185191F327171001672C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5954B841D21F0F60088187E /* Build configuration list for PBXProject "Zombie Piranhas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5954B9F1D21F0F60088187E /* Debug */,
+				F5954BA01D21F0F60088187E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5954BA11D21F0F60088187E /* Build configuration list for PBXNativeTarget "Zombie Piranhas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5954BA21D21F0F60088187E /* Debug */,
+				F5954BA31D21F0F60088187E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F5954B811D21F0F60088187E /* Project object */;
+}

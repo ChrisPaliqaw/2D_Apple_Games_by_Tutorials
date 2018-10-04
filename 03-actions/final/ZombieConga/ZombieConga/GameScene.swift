@@ -16,6 +16,8 @@ class GameScene: SKScene {
     
     var lastTouchLocation:CGPoint
     
+    let zombieAnimation: SKAction
+    
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
@@ -27,7 +29,21 @@ class GameScene: SKScene {
                               width: size.width,
                               height: playableHeight) // 4
         lastTouchLocation = zombieInitialPosition
-        super.init(size: size) // 5
+        
+        // 1
+        var textures:[SKTexture] = []
+        // 2
+        for i in 1...4 {
+            textures.append(SKTexture(imageNamed: "zombie\(i)"))
+        }
+        // 3
+        textures.append(textures[2])
+        textures.append(textures[1])
+        // 4
+        zombieAnimation = SKAction.animate(with: textures,
+                                           timePerFrame: 0.1)
+        
+        super.init(size: size)
     }
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented") // 6
@@ -44,7 +60,13 @@ class GameScene: SKScene {
         
         zombie.position = zombieInitialPosition
         addChild(zombie)
-        spawnEnemy()
+        //zombie.run(SKAction.repeatForever(zombieAnimation))
+        
+        run(SKAction.repeatForever(
+            SKAction.sequence([SKAction.run() { [weak self] in
+                self?.spawnEnemy()
+                },
+                SKAction.wait(forDuration: 2.0)])))
         
         //    // Gesture recognizer example
         //    // Uncomment this and the handleTap method, and comment the touchesBegan/Moved methods to test
@@ -61,12 +83,13 @@ class GameScene: SKScene {
             dt = 0
         }
         lastUpdateTime = currentTime
-        print("\(dt*1000) milliseconds since last update")
+        //print("\(dt*1000) milliseconds since last update")
         
         let amountToMove = velocity * CGFloat(dt)
         if (zombie.position - lastTouchLocation).length() < amountToMove.length() {
             zombie.position = lastTouchLocation
             velocity = CGPoint.zero
+            stopZombieAnimation()
         } else if velocity != CGPoint.zero {
             move(sprite: zombie, velocity: velocity)
             rotate(sprite: zombie, direction: velocity, rotateRadiansPerSec: zombieRotateRadiansPerSec)
@@ -78,11 +101,12 @@ class GameScene: SKScene {
     
     func move(sprite: SKSpriteNode, velocity: CGPoint) {
         let amountToMove = velocity * CGFloat(dt)
-        print("Amount to move: \(amountToMove)")
+        //print("Amount to move: \(amountToMove)")
         sprite.position += amountToMove
     }
     
     func moveZombieToward(location: CGPoint) {
+        startZombieAnimation()
         let offset = location - zombie.position
         let direction = offset.normalized()
         velocity = direction * zombieMovePointsPerSec
@@ -133,13 +157,26 @@ class GameScene: SKScene {
     
     func spawnEnemy() {
         let enemy = SKSpriteNode(imageNamed: "enemy")
-        enemy.position = CGPoint(x: size.width + enemy.size.width/2,
-                                 y: size.height/2)
+        enemy.position = CGPoint(
+            x: size.width + enemy.size.width/2,
+            y: CGFloat.random(
+                in: (playableRect.minY + enemy.size.height/2)...(playableRect.maxY - enemy.size.height/2)))
         addChild(enemy)
-        let actionMove = SKAction.move(
-            to: CGPoint(x: -enemy.size.width/2, y: enemy.position.y),
-            duration: 2.0)
-        enemy.run(actionMove)
+        let actionMove =
+            SKAction.moveTo(x: -enemy.size.width/2, duration: 2.0)
+        let actionRemove = SKAction.removeFromParent()
+        enemy.run(SKAction.sequence([actionMove, actionRemove]))
+    }
+    
+    func startZombieAnimation() {
+        if zombie.action(forKey: "animation") == nil {
+            zombie.run(
+                SKAction.repeatForever(zombieAnimation),
+                withKey: "animation")
+        }
+    }
+    func stopZombieAnimation() {
+        zombie.removeAction(forKey: "animation")
     }
     
     //  @objc func handleTap(recognizer: UIGestureRecognizer) {

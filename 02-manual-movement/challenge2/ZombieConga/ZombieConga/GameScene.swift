@@ -11,6 +11,10 @@ class GameScene: SKScene {
     
     let playableRect: CGRect
     
+    let zombieInitialPosition = CGPoint(x: 400, y: 400)
+    
+    var lastTouchLocation:CGPoint
+    
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
@@ -21,6 +25,7 @@ class GameScene: SKScene {
                               y: playableMargin,
                               width: size.width,
                               height: playableHeight) // 4
+        lastTouchLocation = zombieInitialPosition
         super.init(size: size) // 5
     }
     required init(coder aDecoder: NSCoder) {
@@ -36,7 +41,7 @@ class GameScene: SKScene {
         background.zPosition = -1
         addChild(background)
         
-        zombie.position = CGPoint(x: 400, y: 400)
+        zombie.position = zombieInitialPosition
         addChild(zombie)
         
         //    // Gesture recognizer example
@@ -56,9 +61,15 @@ class GameScene: SKScene {
         lastUpdateTime = currentTime
         print("\(dt*1000) milliseconds since last update")
         
-        move(sprite: zombie, velocity: velocity)
+        let amountToMove = velocity * CGFloat(dt)
+        if (zombie.position - lastTouchLocation).length() < amountToMove.length() {
+            zombie.position = lastTouchLocation
+            velocity = CGPoint.zero
+        } else if velocity != CGPoint.zero {
+            move(sprite: zombie, velocity: velocity)
+            rotate(sprite: zombie, direction: velocity)
+        }
         boundsCheckZombie()
-        rotate(sprite: zombie, direction: velocity)
     }
     
     // MARK: - Helpers
@@ -97,6 +108,7 @@ class GameScene: SKScene {
     }
     
     func sceneTouched(touchLocation:CGPoint) {
+        lastTouchLocation = touchLocation
         moveZombieToward(location: touchLocation)
     }
     

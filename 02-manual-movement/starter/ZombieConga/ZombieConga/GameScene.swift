@@ -19,7 +19,11 @@ class GameScene: SKScene {
         
         zombie.position = CGPoint(x: 400, y: 400)
         addChild(zombie)
-        //zombie.setScale(2.0)
+        
+        //    // Gesture recognizer example
+        //    // Uncomment this and the handleTap method, and comment the touchesBegan/Moved methods to test
+        //    let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        //    view.addGestureRecognizer(tapRecognizer)
         
         let mySize = background.size
         print("Size: \(mySize)")
@@ -64,6 +68,12 @@ class GameScene: SKScene {
     func sceneTouched(touchLocation:CGPoint) {
         moveZombieToward(location: touchLocation)
     }
+    
+    //  @objc func handleTap(recognizer: UIGestureRecognizer) {
+    //    let viewLocation = recognizer.location(in: self.view)
+    //    let touchLocation = convertPoint(fromView: viewLocation)
+    //    sceneTouched(touchLocation: touchLocation)
+    //  }
     
     // MARK: - UIResponder
     

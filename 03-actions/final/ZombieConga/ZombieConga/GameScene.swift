@@ -18,6 +18,11 @@ class GameScene: SKScene {
     
     let zombieAnimation: SKAction
     
+    let catName = "cat"
+    let enemyName = "enemy"
+    
+    let animationKey = "animation"
+    
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
@@ -67,6 +72,11 @@ class GameScene: SKScene {
                 self?.spawnEnemy()
                 },
                 SKAction.wait(forDuration: 2.0)])))
+        run(SKAction.repeatForever(
+            SKAction.sequence([SKAction.run() { [weak self] in
+                self?.spawnCat()
+                },
+                SKAction.wait(forDuration: 1.0)])))
         
         //    // Gesture recognizer example
         //    // Uncomment this and the handleTap method, and comment the touchesBegan/Moved methods to test
@@ -155,8 +165,21 @@ class GameScene: SKScene {
         sprite.zRotation += amountToRotate
     }
     
+    override func didEvaluateActions() {
+        checkCollisions()
+    }
+    
+    //  @objc func handleTap(recognizer: UIGestureRecognizer) {
+    //    let viewLocation = recognizer.location(in: self.view)
+    //    let touchLocation = convertPoint(fromView: viewLocation)
+    //    sceneTouched(touchLocation: touchLocation)
+    //  }
+    
+    // MARK: - Spawn
+    
     func spawnEnemy() {
         let enemy = SKSpriteNode(imageNamed: "enemy")
+        enemy.name = enemyName
         enemy.position = CGPoint(
             x: size.width + enemy.size.width/2,
             y: CGFloat.random(
@@ -168,22 +191,82 @@ class GameScene: SKScene {
         enemy.run(SKAction.sequence([actionMove, actionRemove]))
     }
     
+    func spawnCat() {
+        // 1
+        let cat = SKSpriteNode(imageNamed: "cat")
+        cat.name = catName
+        cat.position = CGPoint(
+            x: CGFloat.random(in: playableRect.minX...playableRect.maxX),
+            y: CGFloat.random(in: playableRect.minY...playableRect.maxY))
+        cat.setScale(0)
+        addChild(cat)
+        // 2
+        let appear = SKAction.scale(to: 1.0, duration: 0.5)
+        
+        cat.zRotation = -π / 16.0
+        let leftWiggle = SKAction.rotate(byAngle: π/8.0, duration: 0.5)
+        let rightWiggle = leftWiggle.reversed()
+        let fullWiggle = SKAction.sequence([leftWiggle, rightWiggle])
+        
+        let scaleUp = SKAction.scale(by: 1.2, duration: 0.25)
+        let scaleDown = scaleUp.reversed()
+        let fullScale = SKAction.sequence(
+            [scaleUp, scaleDown, scaleUp, scaleDown])
+        let group = SKAction.group([fullScale, fullWiggle])
+        let groupWait = SKAction.repeat(group, count: 10)
+        
+        let disappear = SKAction.scale(to: 0, duration: 0.5)
+        let removeFromParent = SKAction.removeFromParent()
+        
+        let actions = [appear, groupWait, disappear, removeFromParent]
+        cat.run(SKAction.sequence(actions))
+    }
+    
+    // MARK: - Zombie animation
+    
     func startZombieAnimation() {
-        if zombie.action(forKey: "animation") == nil {
+        if zombie.action(forKey: animationKey) == nil {
             zombie.run(
                 SKAction.repeatForever(zombieAnimation),
-                withKey: "animation")
+                withKey: animationKey)
         }
     }
     func stopZombieAnimation() {
-        zombie.removeAction(forKey: "animation")
+        zombie.removeAction(forKey: animationKey)
     }
     
-    //  @objc func handleTap(recognizer: UIGestureRecognizer) {
-    //    let viewLocation = recognizer.location(in: self.view)
-    //    let touchLocation = convertPoint(fromView: viewLocation)
-    //    sceneTouched(touchLocation: touchLocation)
-    //  }
+    // MARK: - Collisions
+    
+    func zombieHit(cat: SKSpriteNode) {
+        cat.removeFromParent()
+    }
+    func zombieHit(enemy: SKSpriteNode) {
+        enemy.removeFromParent()
+    }
+    func checkCollisions() {
+        var hitCats: [SKSpriteNode] = []
+        enumerateChildNodes(withName: catName) { node, _ in
+            let cat = node as! SKSpriteNode
+            if cat.frame.intersects(self.zombie.frame) {
+                hitCats.append(cat)
+            }
+        }
+        for cat in hitCats {
+            zombieHit(cat: cat)
+        }
+        var hitEnemies: [SKSpriteNode] = []
+        enumerateChildNodes(withName: enemyName) { node, _ in
+            let enemy = node as! SKSpriteNode
+            if node.frame.insetBy(dx: 20, dy: 20).intersects(
+                self.zombie.frame) {
+                hitEnemies.append(enemy)
+            }
+        }
+        for enemy in hitEnemies {
+            zombieHit(enemy: enemy)
+        }
+    }
+    
     
     // MARK: - UIResponder
     

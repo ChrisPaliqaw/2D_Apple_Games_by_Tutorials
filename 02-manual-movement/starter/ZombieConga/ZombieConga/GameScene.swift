@@ -57,8 +57,8 @@ class GameScene: SKScene {
         print("\(dt*1000) milliseconds since last update")
         
         move(sprite: zombie, velocity: velocity)
-        
         boundsCheckZombie()
+        rotate(sprite: zombie, direction: velocity)
     }
     
     // MARK: - Helpers
@@ -115,6 +115,10 @@ class GameScene: SKScene {
         shape.strokeColor = SKColor.red
         shape.lineWidth = 4.0
         addChild(shape)
+    }
+    
+    func rotate(sprite: SKSpriteNode, direction: CGPoint) {
+        sprite.zRotation = atan2(direction.y, direction.x)
     }
     
     //  @objc func handleTap(recognizer: UIGestureRecognizer) {

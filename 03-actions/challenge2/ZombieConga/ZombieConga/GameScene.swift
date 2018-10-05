@@ -28,6 +28,8 @@ class GameScene: SKScene {
     let enemyCollisionSound: SKAction = SKAction.playSoundFileNamed(
         "hitCatLady.wav", waitForCompletion: false)
     
+    var isZombieInvincible = false
+    
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
@@ -55,6 +57,7 @@ class GameScene: SKScene {
         
         super.init(size: size)
     }
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented") // 6
     }
@@ -247,8 +250,24 @@ class GameScene: SKScene {
         run(catCollisionSound)
     }
     func zombieHit(enemy: SKSpriteNode) {
-        enemy.removeFromParent()
+        //enemy.removeFromParent()
         run(enemyCollisionSound)
+        
+        let blinkTimes = 10.0
+        let duration = 3.0
+        let blinkAction = SKAction.customAction(
+        withDuration: duration) { node, elapsedTime in
+            let slice = duration / blinkTimes
+            let remainder = Double(elapsedTime).truncatingRemainder(
+                dividingBy: slice)
+            node.isHidden = remainder > slice / 2
+        }
+        let endBlinkAction = SKAction.run() { [weak self] in
+            self?.zombie.isHidden = false
+            self?.isZombieInvincible = false
+        }
+        let zombieHitAction = SKAction.sequence([blinkAction, endBlinkAction])
+        zombie.run(zombieHitAction)
     }
     func checkCollisions() {
         var hitCats: [SKSpriteNode] = []
@@ -262,15 +281,17 @@ class GameScene: SKScene {
             zombieHit(cat: cat)
         }
         var hitEnemies: [SKSpriteNode] = []
-        enumerateChildNodes(withName: enemyName) { node, _ in
-            let enemy = node as! SKSpriteNode
-            if node.frame.insetBy(dx: 20, dy: 20).intersects(
-                self.zombie.frame) {
-                hitEnemies.append(enemy)
+        if !isZombieInvincible {
+            enumerateChildNodes(withName: enemyName) { node, _ in
+                let enemy = node as! SKSpriteNode
+                if node.frame.insetBy(dx: 20, dy: 20).intersects(
+                    self.zombie.frame) {
+                    hitEnemies.append(enemy)
+                }
             }
-        }
-        for enemy in hitEnemies {
-            zombieHit(enemy: enemy)
+            for enemy in hitEnemies {
+                zombieHit(enemy: enemy)
+            }
         }
     }
     

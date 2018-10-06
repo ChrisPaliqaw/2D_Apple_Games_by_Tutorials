@@ -13,14 +13,12 @@ class GameScene: SKScene {
     let playableRect: CGRect
     
     let zombieInitialPosition = CGPoint(x: 400, y: 400)
-    let zombieZPosition:CGFloat = 100.0
     
     var lastTouchLocation:CGPoint
     
     let zombieAnimation: SKAction
     
     let catName = "cat"
-    let zombieCatName = "train"
     let enemyName = "enemy"
     
     let animationKey = "animation"
@@ -31,8 +29,6 @@ class GameScene: SKScene {
         "hitCatLady.wav", waitForCompletion: false)
     
     var isZombieInvincible = false
-    
-    let zombieCatMovePointsPerSecond:CGFloat = 480.0
     
     // MARK: - Lifecycle
     
@@ -76,7 +72,6 @@ class GameScene: SKScene {
         addChild(background)
         
         zombie.position = zombieInitialPosition
-        zombie.zPosition = zombieZPosition
         addChild(zombie)
         //zombie.run(SKAction.repeatForever(zombieAnimation))
         
@@ -118,7 +113,6 @@ class GameScene: SKScene {
             rotate(sprite: zombie, direction: velocity, rotateRadiansPerSec: zombieRotateRadiansPerSec)
         }
         boundsCheckZombie()
-        moveTrain()
     }
     
     // MARK: - Helpers
@@ -252,38 +246,14 @@ class GameScene: SKScene {
     // MARK: - Collisions
     
     func zombieHit(cat: SKSpriteNode) {
-        //cat.removeFromParent()
-        cat.name = zombieCatName
-        cat.removeAllActions()
-        cat.setScale(1)
-        cat.zRotation = 0
-        let turnGreenAction = SKAction.colorize(with: UIColor.green, colorBlendFactor: 1.0, duration: 0.2)
-        cat.run(turnGreenAction)
+        cat.removeFromParent()
         run(catCollisionSound)
     }
-    
-    func moveTrain() {
-        var targetPosition = zombie.position
-        
-        enumerateChildNodes(withName: zombieCatName) { node, stop in
-            if !node.hasActions() {
-                let actionDuration = 0.3
-                let offset = targetPosition - node.position
-                let direction = offset.normalized()
-                let amountToMovePerSec = direction * self.zombieCatMovePointsPerSecond
-                let amountToMove = amountToMovePerSec * CGFloat(actionDuration)
-                let moveAction = SKAction.moveBy(x: amountToMove.x, y: amountToMove.y, duration: actionDuration)
-                node.run(moveAction)
-            }
-            targetPosition = node.position
-        }
-    }
-    
     func zombieHit(enemy: SKSpriteNode) {
         //enemy.removeFromParent()
         run(enemyCollisionSound)
-        
         isZombieInvincible = true
+        
         let blinkTimes = 10.0
         let duration = 3.0
         let blinkAction = SKAction.customAction(

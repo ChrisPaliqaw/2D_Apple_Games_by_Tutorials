@@ -94,12 +94,14 @@ class GameScene: SKScene {
                 },
                 SKAction.wait(forDuration: 1.0)])))
         
+        playBackgroundMusic(filename: "backgroundMusic.mp3")
+        
         //    // Gesture recognizer example
         //    // Uncomment this and the handleTap method, and comment the touchesBegan/Moved methods to test
         //    let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         //    view.addGestureRecognizer(tapRecognizer)
         
-        debugDrawPlayableArea()
+        // debugDrawPlayableArea()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -124,8 +126,7 @@ class GameScene: SKScene {
         moveTrain()
         
         if lives <= 0 && !gameOver {
-            gameOver = true
-            print("You lose!")
+            gameOver(won: false)
         }
     }
     
@@ -316,8 +317,7 @@ class GameScene: SKScene {
         }
         
         if trainCount >= 15 && !gameOver {
-            gameOver = true
-            print("You win!")
+            gameOver(won: true)
         }
     }
     
@@ -370,6 +370,21 @@ class GameScene: SKScene {
         }
     }
     
+    func gameOver(won: Bool) {
+        gameOver = true
+        if won {
+            print("You win!")
+        } else {
+            print("You lose!")
+        }
+        
+        backgroundMusicPlayer.stop()
+        
+        let gameOverScene = GameOverScene(size: size, won: won)
+        gameOverScene.scaleMode = scaleMode
+        let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+        view?.presentScene(gameOverScene, transition: reveal)
+    }
     
     // MARK: - UIResponder
     

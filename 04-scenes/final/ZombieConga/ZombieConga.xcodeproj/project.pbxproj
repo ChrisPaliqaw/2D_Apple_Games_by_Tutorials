@@ -13,6 +13,7 @@
 		1513C7ED21663B5E0057DF15 /* hitCatLady.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1513C7E821663B5E0057DF15 /* hitCatLady.wav */; };
 		1513C7EE21663B5E0057DF15 /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1513C7E921663B5E0057DF15 /* backgroundMusic.mp3 */; };
 		153BEFF12165AFC100FEB918 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153BEFF02165AFC100FEB918 /* MyUtils.swift */; };
+		156ECCF9216AF09600370992 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156ECCF8216AF09600370992 /* GameOverScene.swift */; };
 		15C2A761215A27E2001781A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C2A760215A27E2001781A5 /* AppDelegate.swift */; };
 		15C2A767215A27E2001781A5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C2A766215A27E2001781A5 /* GameScene.swift */; };
 		15C2A769215A27E2001781A5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C2A768215A27E2001781A5 /* GameViewController.swift */; };
@@ -28,6 +29,7 @@
 		1513C7E821663B5E0057DF15 /* hitCatLady.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitCatLady.wav; sourceTree = "<group>"; };
 		1513C7E921663B5E0057DF15 /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
 		153BEFF02165AFC100FEB918 /* MyUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
+		156ECCF8216AF09600370992 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		15C2A75D215A27E2001781A5 /* ZombieConga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZombieConga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C2A760215A27E2001781A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15C2A766215A27E2001781A5 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				1513C7E421663B5E0057DF15 /* Sounds */,
 				15C2A760215A27E2001781A5 /* AppDelegate.swift */,
 				15C2A766215A27E2001781A5 /* GameScene.swift */,
+				156ECCF8216AF09600370992 /* GameOverScene.swift */,
 				15C2A768215A27E2001781A5 /* GameViewController.swift */,
 				153BEFF02165AFC100FEB918 /* MyUtils.swift */,
 				15C2A76A215A27E2001781A5 /* Main.storyboard */,
@@ -169,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				156ECCF9216AF09600370992 /* GameOverScene.swift in Sources */,
 				15C2A767215A27E2001781A5 /* GameScene.swift in Sources */,
 				15C2A769215A27E2001781A5 /* GameViewController.swift in Sources */,
 				15C2A761215A27E2001781A5 /* AppDelegate.swift in Sources */,

@@ -34,6 +34,9 @@ class GameScene: SKScene {
     
     let zombieCatMovePointsPerSecond:CGFloat = 480.0
     
+    var lives = 5
+    var gameOver = false
+    
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
@@ -119,6 +122,11 @@ class GameScene: SKScene {
         }
         boundsCheckZombie()
         moveTrain()
+        
+        if lives <= 0 && !gameOver {
+            gameOver = true
+            print("You lose!")
+        }
     }
     
     // MARK: - Helpers
@@ -262,10 +270,39 @@ class GameScene: SKScene {
         run(catCollisionSound)
     }
     
+    func loseCats() {
+        // 1
+        var loseCount = 0
+        enumerateChildNodes(withName: zombieCatName) { node, stop in
+            // 2
+            var randomSpot = node.position
+            randomSpot.x += CGFloat.random(in:-100...100)
+            randomSpot.y += CGFloat.random(in:-100...100)
+            // 3
+            node.name = ""
+            node.run(
+                SKAction.sequence([
+                    SKAction.group([
+                        SKAction.rotate(byAngle: π*4, duration: 1.0),
+                        SKAction.move(to: randomSpot, duration: 1.0),
+                        SKAction.scale(to: 0, duration: 1.0)
+                        ]),
+                    SKAction.removeFromParent()
+                    ]))
+            // 4
+            loseCount += 1
+            if loseCount >= 2 {
+                stop[0] = true
+            }
+        }
+    }
+    
     func moveTrain() {
         var targetPosition = zombie.position
+        var trainCount = 0
         
         enumerateChildNodes(withName: zombieCatName) { node, stop in
+            trainCount += 1
             if !node.hasActions() {
                 let actionDuration = 0.3
                 let offset = targetPosition - node.position
@@ -277,11 +314,18 @@ class GameScene: SKScene {
             }
             targetPosition = node.position
         }
+        
+        if trainCount >= 15 && !gameOver {
+            gameOver = true
+            print("You win!")
+        }
     }
     
     func zombieHit(enemy: SKSpriteNode) {
         //enemy.removeFromParent()
         run(enemyCollisionSound)
+        loseCats()
+        lives -= 1
         
         isZombieInvincible = true
         let blinkTimes = 10.0

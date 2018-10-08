@@ -41,6 +41,8 @@ class GameScene: SKScene {
     var lives = 5
     var gameOver = false
     
+    let livesLabel = SKLabelNode(fontNamed: "Glimstick")
+    
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
@@ -108,6 +110,17 @@ class GameScene: SKScene {
         camera = cameraNode
         cameraNode.position = CGPoint(x: size.width/2, y: size.height/2)
         
+        livesLabel.text = "Lives: X"
+        livesLabel.fontColor = SKColor.black
+        livesLabel.fontSize = 100
+        livesLabel.zPosition = 150
+        livesLabel.horizontalAlignmentMode = .left
+        livesLabel.verticalAlignmentMode = .bottom
+        livesLabel.position = CGPoint(
+            x: -playableRect.size.width/2 + CGFloat(30),
+            y: -playableRect.size.height/2 + CGFloat(30))
+        cameraNode.addChild(livesLabel)
+        
         //    // Gesture recognizer example
         //    // Uncomment this and the handleTap method, and comment the touchesBegan/Moved methods to test
         //    let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -137,6 +150,7 @@ class GameScene: SKScene {
         boundsCheckZombie()
         moveTrain()
         moveCamera()
+        livesLabel.text = "Lives: \(lives)"
         
         if lives <= 0 && !gameOver {
             gameOver(won: false)

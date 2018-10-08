@@ -42,6 +42,7 @@ class GameScene: SKScene {
     var gameOver = false
     
     let livesLabel = SKLabelNode(fontNamed: "Glimstick")
+    let catsLabel = SKLabelNode(fontNamed: "Glimstick")
     
     // MARK: - Lifecycle
     
@@ -120,6 +121,17 @@ class GameScene: SKScene {
             x: -playableRect.size.width/2 + CGFloat(30),
             y: -playableRect.size.height/2 + CGFloat(30))
         cameraNode.addChild(livesLabel)
+        
+        catsLabel.text = "Lives: X"
+        catsLabel.fontColor = SKColor.black
+        catsLabel.fontSize = 100
+        catsLabel.zPosition = 150
+        catsLabel.horizontalAlignmentMode = .right
+        catsLabel.verticalAlignmentMode = .bottom
+        catsLabel.position = CGPoint(
+            x: playableRect.size.width/2 - CGFloat(30),
+            y: -playableRect.size.height/2 + CGFloat(30))
+        cameraNode.addChild(catsLabel)
         
         //    // Gesture recognizer example
         //    // Uncomment this and the handleTap method, and comment the touchesBegan/Moved methods to test
@@ -399,6 +411,7 @@ class GameScene: SKScene {
             }
             targetPosition = node.position
         }
+        catsLabel.text = "Cats: \(trainCount)"
         
         if trainCount >= 15 && !gameOver {
             gameOver(won: true)

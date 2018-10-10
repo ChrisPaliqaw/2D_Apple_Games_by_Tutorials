@@ -96,3 +96,30 @@ l.position = CGPoint(x: scene.size.width * 0.5,
                      y: scene.size.height * 0.75)
 l.physicsBody = SKPhysicsBody(texture: l.texture!, size: l.size)
 scene.addChild(l)
+
+var blowingRight = true
+var windForce = CGVector(dx: 50, dy: 0)
+
+extension SKScene {
+    //1
+    @objc func applyWindForce() {
+        enumerateChildNodes(withName: "sand") { node, _ in
+            node.physicsBody!.applyForce(windForce)
+        }
+        enumerateChildNodes(withName: "shape") { node, _ in
+            node.physicsBody!.applyForce(windForce)
+        }
+    }
+    //2
+    @objc func switchWindDirection() {
+        blowingRight = !blowingRight
+        windForce = CGVector(dx: blowingRight ? 50 : -50, dy: 0)
+    }
+}
+//3
+Timer.scheduledTimer(timeInterval: 0.05, target: scene,
+                     selector: #selector(SKScene.applyWindForce),
+                     userInfo: nil, repeats: true)
+Timer.scheduledTimer(timeInterval: 3.0, target: scene,
+                     selector: #selector(SKScene.switchWindDirection),
+                     userInfo: nil, repeats: true)

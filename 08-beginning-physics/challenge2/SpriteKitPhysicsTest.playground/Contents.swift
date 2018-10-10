@@ -33,6 +33,14 @@ scene.addChild(triangle)
 
 circle.physicsBody = SKPhysicsBody(circleOfRadius:
     circle.size.width/2)
+circle.physicsBody?.isDynamic = false
+let circleMove = SKAction.repeatForever(
+    SKAction.sequence([
+        SKAction.moveTo(x: 50.0, duration: 3.0),
+        SKAction.moveTo(x: 400.0, duration: 3.0)
+        ])
+)
+circle.run(circleMove)
 
 func spawnSand() {
     let sand = SKSpriteNode(imageNamed: "sand")

@@ -21,6 +21,8 @@
 		150F72D1216CAB9A00B5633B /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 150F72CC216CAB9A00B5633B /* lose.mp3 */; };
 		150F72D2216CAB9A00B5633B /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 150F72CD216CAB9A00B5633B /* backgroundMusic.mp3 */; };
 		15113396216CC2270055F9BA /* Cat.sks in Resources */ = {isa = PBXBuildFile; fileRef = 15113395216CC2270055F9BA /* Cat.sks */; };
+		15CAC004216DE3F400ECA033 /* CatCurl.sks in Resources */ = {isa = PBXBuildFile; fileRef = 15CAC003216DE3F400ECA033 /* CatCurl.sks */; };
+		15CAC006216DF03A00ECA033 /* CatWakeUp.sks in Resources */ = {isa = PBXBuildFile; fileRef = 15CAC005216DF03A00ECA033 /* CatWakeUp.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		150F72CC216CAB9A00B5633B /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
 		150F72CD216CAB9A00B5633B /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
 		15113395216CC2270055F9BA /* Cat.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Cat.sks; sourceTree = "<group>"; };
+		15CAC003216DE3F400ECA033 /* CatCurl.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CatCurl.sks; sourceTree = "<group>"; };
+		15CAC005216DF03A00ECA033 /* CatWakeUp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CatWakeUp.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 			children = (
 				150F72B1216C1C0B00B5633B /* GameScene.sks */,
 				15113395216CC2270055F9BA /* Cat.sks */,
+				15CAC003216DE3F400ECA033 /* CatCurl.sks */,
+				15CAC005216DF03A00ECA033 /* CatWakeUp.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -169,6 +175,8 @@
 				15113396216CC2270055F9BA /* Cat.sks in Resources */,
 				150F72B2216C1C0B00B5633B /* GameScene.sks in Resources */,
 				150F72D1216CAB9A00B5633B /* lose.mp3 in Resources */,
+				15CAC006216DF03A00ECA033 /* CatWakeUp.sks in Resources */,
+				15CAC004216DE3F400ECA033 /* CatCurl.sks in Resources */,
 				150F72BD216C1C0D00B5633B /* Assets.xcassets in Resources */,
 				150F72D0216CAB9A00B5633B /* win.mp3 in Resources */,
 				150F72C0216C1C0D00B5633B /* LaunchScreen.storyboard in Resources */,

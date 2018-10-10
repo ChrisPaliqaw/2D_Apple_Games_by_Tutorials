@@ -55,8 +55,8 @@ func shake() {
     }
     scene.enumerateChildNodes(withName: "shape") { node, _ in
         node.physicsBody!.applyImpulse(
-            CGVector(dx: CGFloat.random(in:20...max:60),
-                     dy: CGFloat.random(in:20...max:60))
+            CGVector(dx: CGFloat.random(in:20...60),
+                     dy: CGFloat.random(in:20...60))
         )
     }
     delay(seconds: 3, completion: shake)

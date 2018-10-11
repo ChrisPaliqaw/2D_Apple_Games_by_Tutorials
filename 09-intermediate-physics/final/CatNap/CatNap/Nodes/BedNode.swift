@@ -7,5 +7,7 @@ class BedNode: SKSpriteNode, EventListenerNode {
         let bedBodySize = CGSize(width: 36.0, height: 27.0)
         physicsBody = SKPhysicsBody(rectangleOf: bedBodySize)
         physicsBody!.isDynamic = false
+        physicsBody!.categoryBitMask = PhysicsCategory.Bed
+        physicsBody!.collisionBitMask = PhysicsCategory.None
     }
 }

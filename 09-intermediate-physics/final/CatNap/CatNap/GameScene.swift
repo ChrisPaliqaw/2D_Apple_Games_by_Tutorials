@@ -29,5 +29,8 @@ class GameScene: SKScene {
         
         bedNode = (childNode(withName: "bed") as! BedNode)
         catNode = (childNode(withName: "//cat_body") as! CatNode)
+        
+        SKTAudio.sharedInstance()
+            .playBackgroundMusic("backgroundMusic.mp3")
     }
 }

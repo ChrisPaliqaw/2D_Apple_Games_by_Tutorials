@@ -37,7 +37,7 @@ class GameScene: SKScene {
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
-        let maxAspectRatio:CGFloat = 2.16 // 1
+        let maxAspectRatio:CGFloat = 2.17 // 1
         let playableHeight = size.width / maxAspectRatio // 2
         let playableMargin = (size.height-playableHeight)/2.0 // 3
         playableRect = CGRect(x: 0,
@@ -252,7 +252,6 @@ class GameScene: SKScene {
     // MARK: - Collisions
     
     func zombieHit(cat: SKSpriteNode) {
-        //cat.removeFromParent()
         cat.name = zombieCatName
         cat.removeAllActions()
         cat.setScale(1)
@@ -280,7 +279,6 @@ class GameScene: SKScene {
     }
     
     func zombieHit(enemy: SKSpriteNode) {
-        //enemy.removeFromParent()
         run(enemyCollisionSound)
         
         isZombieInvincible = true
@@ -293,9 +291,9 @@ class GameScene: SKScene {
                 dividingBy: slice)
             node.isHidden = remainder > slice / 2
         }
-        let endBlinkAction = SKAction.run() { [weak self] in
-            self?.zombie.isHidden = false
-            self?.isZombieInvincible = false
+        let endBlinkAction = SKAction.run() {
+            self.zombie.isHidden = false
+            self.isZombieInvincible = false
         }
         let zombieHitAction = SKAction.sequence([blinkAction, endBlinkAction])
         zombie.run(zombieHitAction)

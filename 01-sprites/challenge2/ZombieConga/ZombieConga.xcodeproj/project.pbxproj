@@ -99,6 +99,7 @@
 				TargetAttributes = {
 					15C2A75C215A27E2001781A5 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -295,7 +296,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qalang.ZombieConga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -313,7 +314,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qalang.ZombieConga;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

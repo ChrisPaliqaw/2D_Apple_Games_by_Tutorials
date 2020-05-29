@@ -33,7 +33,7 @@ class GameScene: SKScene {
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
-        let maxAspectRatio:CGFloat = 2.16 // 1
+        let maxAspectRatio:CGFloat = 2.17 // 1
         let playableHeight = size.width / maxAspectRatio // 2
         let playableMargin = (size.height-playableHeight)/2.0 // 3
         playableRect = CGRect(x: 0,

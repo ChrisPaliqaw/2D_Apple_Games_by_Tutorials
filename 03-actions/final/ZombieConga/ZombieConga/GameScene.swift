@@ -184,11 +184,12 @@ class GameScene: SKScene {
     
     func spawnEnemy() {
         let enemy = SKSpriteNode(imageNamed: "enemy")
+        let halfEnemyHeight:CGFloat = enemy.size.height/2
         enemy.name = enemyName
         enemy.position = CGPoint(
             x: size.width + enemy.size.width/2,
             y: CGFloat.random(
-                in: (playableRect.minY + enemy.size.height/2)...(playableRect.maxY - enemy.size.height/2)))
+                in: (playableRect.minY + halfEnemyHeight)...(playableRect.maxY - halfEnemyHeight)))
         addChild(enemy)
         let actionMove =
             SKAction.moveTo(x: -enemy.size.width/2, duration: 2.0)

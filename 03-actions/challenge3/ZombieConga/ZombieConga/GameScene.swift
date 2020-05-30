@@ -81,15 +81,16 @@ class GameScene: SKScene {
         //zombie.run(SKAction.repeatForever(zombieAnimation))
         
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run() { [weak self] in
-                self?.spawnEnemy()
+            SKAction.sequence([SKAction.run() {
+                self.spawnEnemy()
                 },
-                SKAction.wait(forDuration: 2.0)])))
+                               SKAction.wait(forDuration: 2.0)])))
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run() { [weak self] in
-                self?.spawnCat()
-                },
-                SKAction.wait(forDuration: 1.0)])))
+            SKAction.sequence(
+                [SKAction.run() {
+                    self.spawnCat()
+                    },
+                 SKAction.wait(forDuration: 1.0)])))
         
         //    // Gesture recognizer example
         //    // Uncomment this and the handleTap method, and comment the touchesBegan/Moved methods to test
@@ -344,5 +345,5 @@ class GameScene: SKScene {
         let touchLocation = touch.location(in: self)
         sceneTouched(touchLocation: touchLocation)
     }
-
+    
 }

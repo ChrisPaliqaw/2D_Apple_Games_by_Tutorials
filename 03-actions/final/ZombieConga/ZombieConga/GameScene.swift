@@ -73,13 +73,13 @@ class GameScene: SKScene {
         //zombie.run(SKAction.repeatForever(zombieAnimation))
         
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run() { [weak self] in
-                self?.spawnEnemy()
+            SKAction.sequence([SKAction.run() {
+                self.spawnEnemy()
                 },
                 SKAction.wait(forDuration: 2.0)])))
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run() { [weak self] in
-                self?.spawnCat()
+            SKAction.sequence([SKAction.run() {
+                self.spawnCat()
                 },
                 SKAction.wait(forDuration: 1.0)])))
         

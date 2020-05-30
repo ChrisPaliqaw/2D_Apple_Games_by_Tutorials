@@ -673,8 +673,8 @@ class BlockScene : GameScene {
     // run(_:)
     cat.run(SKAction.repeatForever(
       SKAction.sequence([
-        SKAction.run() { [weak self] in
-          self?.rotateCat()
+        SKAction.run() {
+          self.rotateCat()
         },
         SKAction.wait(forDuration: 2.0)
       ])
@@ -682,8 +682,8 @@ class BlockScene : GameScene {
     
     dog.run(SKAction.repeatForever(
       SKAction.sequence([
-        SKAction.run() { [weak self] in
-          self?.dog.run(SKAction.rotate(byAngle: π*2, duration:1.0))
+        SKAction.run() {
+          self.dog.run(SKAction.rotate(byAngle: π*2, duration:1.0))
         },
         SKAction.wait(forDuration: 2.0)
       ])
@@ -694,12 +694,11 @@ class BlockScene : GameScene {
     var workDone = true
     turtle.run(SKAction.repeatForever(
       SKAction.sequence([
-        SKAction.run({ [weak self] in
-          guard let strongSelf = self else { return }
+        SKAction.run({
           if (workDone) {
             workDone = false
-            strongSelf.turtle.run(SKAction.rotate(byAngle: π*2, duration:1.0))
-            strongSelf.turtle.run(SKAction.run({
+            self.turtle.run(SKAction.rotate(byAngle: π*2, duration:1.0))
+            self.turtle.run(SKAction.run({
               sleep(1)
               workDone = true
             }, queue: queue))

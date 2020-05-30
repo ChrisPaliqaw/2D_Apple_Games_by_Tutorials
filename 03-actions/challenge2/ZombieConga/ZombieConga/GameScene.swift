@@ -76,13 +76,13 @@ class GameScene: SKScene {
         //zombie.run(SKAction.repeatForever(zombieAnimation))
         
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run() { [weak self] in
-                self?.spawnEnemy()
+            SKAction.sequence([SKAction.run() {
+                self.spawnEnemy()
                 },
                 SKAction.wait(forDuration: 2.0)])))
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run() { [weak self] in
-                self?.spawnCat()
+            SKAction.sequence([SKAction.run() {
+                self.spawnCat()
                 },
                 SKAction.wait(forDuration: 1.0)])))
         
@@ -263,9 +263,9 @@ class GameScene: SKScene {
                 dividingBy: slice)
             node.isHidden = remainder > slice / 2
         }
-        let endBlinkAction = SKAction.run() { [weak self] in
-            self?.zombie.isHidden = false
-            self?.isZombieInvincible = false
+        let endBlinkAction = SKAction.run() {
+            self.zombie.isHidden = false
+            self.isZombieInvincible = false
         }
         let zombieHitAction = SKAction.sequence([blinkAction, endBlinkAction])
         zombie.run(zombieHitAction)

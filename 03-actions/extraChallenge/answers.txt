@@ -1,0 +1,19 @@
+Challenge 1 answers:
+
+ 1) follow(_:duration:)
+ 2) fadeAlpha(to:duration:)
+ 3) Explanation follows:
+
+ Custom actions allow you to easily make a node do something over time that there isn't already an action for. The ActionsCatalog demonstrates three kinds of custom actions: making a node blink, jump, or follow a sin wave.
+
+ Custom actions give you a node to work with, and how much time has elapsed. Your job is to update something on the node, based on the percentage of how much time has elapsed vs. the passed in duration.
+
+ As an example, here's an explanation of the blink action demo in ActionsCatalog:
+
+ 1) Divide the duration by the number of blinks desired in that time period. Call that a "slice" of time. In each slice, the node should be visible for half the time, and invisible for the other half. That is what will make the node appear to blink.
+
+ 2) The truncatingRemainder method returns the remainder of the first parameter (elapsedTime) after being divided by the second parameter (slice). So in this example, it gives you the amount of time that has elapsed in this "slice" calculated earlier.
+
+ 3) The hidden property on a node controls whether it is rendered or not. If the remainder calculated above is in the second half of the slice, it should be hidden (invisible). Otherwise it will be visible. Hence, the blink effect!
+
+Note that you can also accomplish a blink effect with a combination of hide() and unhide() actions, as you see in HideScene.

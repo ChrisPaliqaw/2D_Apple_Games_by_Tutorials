@@ -34,10 +34,13 @@ class GameScene: SKScene {
     
     let zombieCatMovePointsPerSecond:CGFloat = 480.0
     
+    var timeLastTouched = Date()
+    let minTimeBetweenTouches = TimeInterval(0.5)
+    
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
-        let maxAspectRatio:CGFloat = 2.16 // 1
+        let maxAspectRatio:CGFloat = 2.17 // 1
         let playableHeight = size.width / maxAspectRatio // 2
         let playableMargin = (size.height-playableHeight)/2.0 // 3
         playableRect = CGRect(x: 0,
@@ -81,13 +84,13 @@ class GameScene: SKScene {
         //zombie.run(SKAction.repeatForever(zombieAnimation))
         
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run() { [weak self] in
-                self?.spawnEnemy()
+            SKAction.sequence([SKAction.run() {
+                self.spawnEnemy()
                 },
                 SKAction.wait(forDuration: 2.0)])))
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run() { [weak self] in
-                self?.spawnCat()
+            SKAction.sequence([SKAction.run() {
+                self.spawnCat()
                 },
                 SKAction.wait(forDuration: 1.0)])))
         
@@ -158,6 +161,13 @@ class GameScene: SKScene {
     }
     
     func sceneTouched(touchLocation:CGPoint) {
+        let currentTime = Date()
+        let newDelta = currentTime.timeIntervalSince(self.timeLastTouched)
+        timeLastTouched = currentTime
+        if newDelta.isLess(than: minTimeBetweenTouches) {
+            return
+        }
+        
         lastTouchLocation = touchLocation
         moveZombieToward(location: touchLocation)
     }
@@ -293,9 +303,9 @@ class GameScene: SKScene {
                 dividingBy: slice)
             node.isHidden = remainder > slice / 2
         }
-        let endBlinkAction = SKAction.run() { [weak self] in
-            self?.zombie.isHidden = false
-            self?.isZombieInvincible = false
+        let endBlinkAction = SKAction.run() {
+            self.zombie.isHidden = false
+            self.isZombieInvincible = false
         }
         let zombieHitAction = SKAction.sequence([blinkAction, endBlinkAction])
         zombie.run(zombieHitAction)

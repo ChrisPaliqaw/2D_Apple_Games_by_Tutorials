@@ -11,6 +11,9 @@ class GameScene: SKScene {
     
     let playableRect: CGRect
     
+    var timeLastTouched = Date()
+    let minTimeBetweenTouches = TimeInterval(0.5)
+    
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
@@ -97,6 +100,14 @@ class GameScene: SKScene {
     }
     
     func sceneTouched(touchLocation:CGPoint) {
+        let currentTime = Date()
+        let newDelta =
+            currentTime.timeIntervalSince(self.timeLastTouched)
+        timeLastTouched = currentTime
+        if newDelta.isLess(than: minTimeBetweenTouches) {
+            return
+        }
+        
         moveZombieToward(location: touchLocation)
     }
     

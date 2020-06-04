@@ -40,6 +40,8 @@ class GameScene: SKScene {
     var lives = 5
     var gameOver = false
     
+    let cameraNode = SKCameraNode()
+    
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
@@ -99,12 +101,10 @@ class GameScene: SKScene {
         
         playBackgroundMusic(filename: "backgroundMusic.mp3")
         
-        //    // Gesture recognizer example
-        //    // Uncomment this and the handleTap method, and comment the touchesBegan/Moved methods to test
-        //    let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        //    view.addGestureRecognizer(tapRecognizer)
+        addChild(cameraNode)
+        camera = cameraNode
+        cameraNode.position = CGPoint(x: size.width/2, y: size.height/2)
         
-        // debugDrawPlayableArea()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -131,6 +131,8 @@ class GameScene: SKScene {
         if lives <= 0 && !gameOver {
             gameOver(won: false)
         }
+        
+        //cameraNode.position = zombie.position
     }
     
     // MARK: - Helpers

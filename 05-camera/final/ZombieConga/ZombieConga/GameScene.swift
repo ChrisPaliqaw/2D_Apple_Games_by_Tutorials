@@ -41,6 +41,7 @@ class GameScene: SKScene {
     var gameOver = false
     
     let cameraNode = SKCameraNode()
+    let cameraMovePointsPerSec: CGFloat = 200.0
     
     // MARK: - Lifecycle
     
@@ -76,10 +77,11 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.black
-        let background = SKSpriteNode(imageNamed: "background1")
         
-        background.anchorPoint = CGPoint(x: 0.5, y: 0.5) // default
-        background.position = CGPoint(x: size.width/2, y: size.height/2)
+        let background = backgroundNode()
+        background.anchorPoint = CGPoint.zero
+        background.position = CGPoint.zero
+        background.name = "background"
         background.zPosition = -1
         addChild(background)
         
@@ -92,12 +94,12 @@ class GameScene: SKScene {
             SKAction.sequence([SKAction.run() { [weak self] in
                 self?.spawnEnemy()
                 },
-                SKAction.wait(forDuration: 2.0)])))
+                               SKAction.wait(forDuration: 2.0)])))
         run(SKAction.repeatForever(
             SKAction.sequence([SKAction.run() { [weak self] in
                 self?.spawnCat()
                 },
-                SKAction.wait(forDuration: 1.0)])))
+                               SKAction.wait(forDuration: 1.0)])))
         
         playBackgroundMusic(filename: "backgroundMusic.mp3")
         
@@ -127,6 +129,7 @@ class GameScene: SKScene {
         }
         boundsCheckZombie()
         moveTrain()
+        moveCamera()
         
         if lives <= 0 && !gameOver {
             gameOver(won: false)
@@ -300,9 +303,9 @@ class GameScene: SKScene {
                         SKAction.rotate(byAngle: π*4, duration: 1.0),
                         SKAction.move(to: randomSpot, duration: 1.0),
                         SKAction.scale(to: 0, duration: 1.0)
-                        ]),
+                    ]),
                     SKAction.removeFromParent()
-                    ]))
+                ]))
             // 4
             loseCount += 1
             if loseCount >= 2 {
@@ -418,5 +421,37 @@ class GameScene: SKScene {
         let touchLocation = touch.location(in: self)
         sceneTouched(touchLocation: touchLocation)
     }
-
+    
+    func backgroundNode() -> SKSpriteNode {
+        // 1
+        let backgroundNode = SKSpriteNode()
+        backgroundNode.anchorPoint = CGPoint.zero
+        backgroundNode.name = "background"
+        // 2
+        let background1 = SKSpriteNode(imageNamed: "background1")
+        background1.anchorPoint = CGPoint.zero
+        background1.position = CGPoint(x: 0, y: 0)
+        backgroundNode.addChild(background1)
+        // 3
+        let background2 = SKSpriteNode(imageNamed: "background2")
+        background2.anchorPoint = CGPoint.zero
+        background2.position =
+            CGPoint(x: background1.size.width, y: 0)
+        backgroundNode.addChild(background2)
+        // 4
+        backgroundNode.size = CGSize(
+            width: background1.size.width + background2.size.width,
+            height: background1.size.height)
+        return backgroundNode
+    }
+    
+    func moveCamera() {
+        let backgroundVelocity =
+            CGPoint(x: cameraMovePointsPerSec, y: 0)
+        let amountToMove = backgroundVelocity * CGFloat(dt)
+        cameraNode.position += amountToMove
+    }
+    
+    
 }
+

@@ -43,6 +43,8 @@ class GameScene: SKScene {
     let cameraNode = SKCameraNode()
     let cameraMovePointsPerSec: CGFloat = 200.0
     
+    let livesLabel = SKLabelNode(fontNamed: "Glimstick")
+    
     var cameraRect : CGRect {
         let x = cameraNode.position.x - size.width/2
             + (size.width - playableRect.width)/2
@@ -58,7 +60,7 @@ class GameScene: SKScene {
     // MARK: - Lifecycle
     
     override init(size: CGSize) {
-        let maxAspectRatio:CGFloat = 2.16 // 1
+        let maxAspectRatio:CGFloat = 2.17 // 1
         let playableHeight = size.width / maxAspectRatio // 2
         let playableMargin = (size.height-playableHeight)/2.0 // 3
         playableRect = CGRect(x: 0,
@@ -106,13 +108,13 @@ class GameScene: SKScene {
         //zombie.run(SKAction.repeatForever(zombieAnimation))
         
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run() { [weak self] in
-                self?.spawnEnemy()
+            SKAction.sequence([SKAction.run() {
+                self.spawnEnemy()
                 },
                                SKAction.wait(forDuration: 2.0)])))
         run(SKAction.repeatForever(
-            SKAction.sequence([SKAction.run() { [weak self] in
-                self?.spawnCat()
+            SKAction.sequence([SKAction.run() {
+                self.spawnCat()
                 },
                                SKAction.wait(forDuration: 1.0)])))
         
@@ -122,6 +124,17 @@ class GameScene: SKScene {
         camera = cameraNode
         cameraNode.position = CGPoint(x: size.width/2, y: size.height/2)
         
+        livesLabel.text = "Lives: X"
+        livesLabel.fontColor = SKColor.black
+        livesLabel.fontSize = 100
+        livesLabel.zPosition = 150
+        livesLabel.horizontalAlignmentMode = .left
+        livesLabel.verticalAlignmentMode = .bottom
+        livesLabel.position = CGPoint(
+            x: -playableRect.size.width/2 + CGFloat(30),
+            y: -playableRect.size.height/2 + CGFloat(30)
+        )
+        cameraNode.addChild(livesLabel)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -136,6 +149,7 @@ class GameScene: SKScene {
         boundsCheckZombie()
         moveTrain()
         moveCamera()
+        livesLabel.text = "Lives: \(lives)"
         
         if lives <= 0 && !gameOver {
             gameOver(won: false)

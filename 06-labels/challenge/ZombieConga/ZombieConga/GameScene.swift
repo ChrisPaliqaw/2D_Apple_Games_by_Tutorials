@@ -43,7 +43,9 @@ class GameScene: SKScene {
     let cameraNode = SKCameraNode()
     let cameraMovePointsPerSec: CGFloat = 200.0
     
-    let livesLabel = SKLabelNode(fontNamed: "Glimstick")
+    static let fontName = "Glimstick"
+    let livesLabel = SKLabelNode(fontNamed: fontName)
+    let catsLabel = SKLabelNode(fontNamed: fontName)
     
     var cameraRect : CGRect {
         let x = cameraNode.position.x - size.width/2
@@ -105,7 +107,6 @@ class GameScene: SKScene {
         zombie.position = zombieInitialPosition
         zombie.zPosition = zombieZPosition
         addChild(zombie)
-        //zombie.run(SKAction.repeatForever(zombieAnimation))
         
         run(SKAction.repeatForever(
             SKAction.sequence([SKAction.run() {
@@ -125,16 +126,30 @@ class GameScene: SKScene {
         cameraNode.position = CGPoint(x: size.width/2, y: size.height/2)
         
         livesLabel.text = "Lives: X"
-        livesLabel.fontColor = SKColor.black
-        livesLabel.fontSize = 100
-        livesLabel.zPosition = 150
+        catsLabel.text = "Cats: X"
+        let fontColor = SKColor.black
+        livesLabel.fontColor = fontColor
+        catsLabel.fontColor = fontColor
+        let fontSize:CGFloat = 100
+        let labelZPosition:CGFloat = 150
+        livesLabel.fontSize = fontSize
+        catsLabel.fontSize = fontSize
+        livesLabel.zPosition = labelZPosition
+        catsLabel.zPosition = labelZPosition
         livesLabel.horizontalAlignmentMode = .left
+        catsLabel.horizontalAlignmentMode = .right
+        livesLabel.verticalAlignmentMode = .bottom
         livesLabel.verticalAlignmentMode = .bottom
         livesLabel.position = CGPoint(
             x: -playableRect.size.width/2 + CGFloat(30),
             y: -playableRect.size.height/2 + CGFloat(30)
         )
+        catsLabel.position = CGPoint(
+            x: playableRect.size.width/2 - CGFloat(30),
+            y: -playableRect.size.height/2 + CGFloat(30)
+        )
         cameraNode.addChild(livesLabel)
+        cameraNode.addChild(catsLabel)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -154,8 +169,6 @@ class GameScene: SKScene {
         if lives <= 0 && !gameOver {
             gameOver(won: false)
         }
-        
-        //cameraNode.position = zombie.position
     }
     
     func gameOver(won: Bool) {
@@ -381,6 +394,7 @@ class GameScene: SKScene {
             }
             targetPosition = node.position
         }
+        catsLabel.text = "Cats: \(trainCount)"
         
         if trainCount >= 15 && !gameOver {
             gameOver(won: true)

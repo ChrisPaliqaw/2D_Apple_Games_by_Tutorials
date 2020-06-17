@@ -20,6 +20,7 @@
 		1515E44F2493FAE700C96BD1 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1515E44A2493FAE700C96BD1 /* win.mp3 */; };
 		1515E4502493FAE700C96BD1 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1515E44B2493FAE700C96BD1 /* lose.mp3 */; };
 		1515E4512493FAE700C96BD1 /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1515E44C2493FAE700C96BD1 /* backgroundMusic.mp3 */; };
+		1515E4542499E72A00C96BD1 /* Cat.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1515E4532499E72A00C96BD1 /* Cat.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		1515E44A2493FAE700C96BD1 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
 		1515E44B2493FAE700C96BD1 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
 		1515E44C2493FAE700C96BD1 /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
+		1515E4532499E72A00C96BD1 /* Cat.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Cat.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +72,11 @@
 		1515E42E2493F6FE00C96BD1 /* CatNap */ = {
 			isa = PBXGroup;
 			children = (
+				1515E4522499E6C700C96BD1 /* Scenes */,
 				1515E4472493FAE700C96BD1 /* Sounds */,
 				1515E42F2493F6FE00C96BD1 /* AppDelegate.swift */,
 				1515E4312493F6FE00C96BD1 /* GameScene.sks */,
 				1515E4332493F6FE00C96BD1 /* Actions.sks */,
-				1515E4352493F6FE00C96BD1 /* GameScene.swift */,
 				1515E4372493F6FE00C96BD1 /* GameViewController.swift */,
 				1515E4392493F6FE00C96BD1 /* Main.storyboard */,
 				1515E43C2493F70700C96BD1 /* Assets.xcassets */,
@@ -95,6 +97,15 @@
 			);
 			name = Sounds;
 			path = ../../../starter/Resources/Sounds;
+			sourceTree = "<group>";
+		};
+		1515E4522499E6C700C96BD1 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				1515E4352493F6FE00C96BD1 /* GameScene.swift */,
+				1515E4532499E72A00C96BD1 /* Cat.sks */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +176,7 @@
 				1515E44E2493FAE700C96BD1 /* pop.mp3 in Resources */,
 				1515E4512493FAE700C96BD1 /* backgroundMusic.mp3 in Resources */,
 				1515E4342493F6FE00C96BD1 /* Actions.sks in Resources */,
+				1515E4542499E72A00C96BD1 /* Cat.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

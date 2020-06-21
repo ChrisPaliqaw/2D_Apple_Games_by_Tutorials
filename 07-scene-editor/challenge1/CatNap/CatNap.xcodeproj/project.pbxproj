@@ -20,6 +20,7 @@
 		1515E4502493FAE700C96BD1 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1515E44B2493FAE700C96BD1 /* lose.mp3 */; };
 		1515E4512493FAE700C96BD1 /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1515E44C2493FAE700C96BD1 /* backgroundMusic.mp3 */; };
 		1515E4542499E72A00C96BD1 /* Cat.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1515E4532499E72A00C96BD1 /* Cat.sks */; };
+		158E3BF924A0255F00864FB9 /* CatCurl.sks in Resources */ = {isa = PBXBuildFile; fileRef = 158E3BF824A0255F00864FB9 /* CatCurl.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		1515E44B2493FAE700C96BD1 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
 		1515E44C2493FAE700C96BD1 /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
 		1515E4532499E72A00C96BD1 /* Cat.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Cat.sks; sourceTree = "<group>"; };
+		158E3BF824A0255F00864FB9 /* CatCurl.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CatCurl.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				1515E4532499E72A00C96BD1 /* Cat.sks */,
 				1515E4312493F6FE00C96BD1 /* GameScene.sks */,
+				158E3BF824A0255F00864FB9 /* CatCurl.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1515E43B2493F6FE00C96BD1 /* Main.storyboard in Resources */,
+				158E3BF924A0255F00864FB9 /* CatCurl.sks in Resources */,
 				1515E4322493F6FE00C96BD1 /* GameScene.sks in Resources */,
 				1515E4502493FAE700C96BD1 /* lose.mp3 in Resources */,
 				1515E43D2493F70700C96BD1 /* Assets.xcassets in Resources */,
